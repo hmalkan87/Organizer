@@ -1,0 +1,45 @@
+﻿@model Organizer.UI.Models.LoginModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Index</h2>*@
+
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                @Html.TextBoxFor(t => t.UserName, new { @class = "form-control", placeholder = "Email" })
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                @Html.TextBoxFor(t => t.Password, new { @class = "form-control", placeholder = "Şifre" })
+            </div>
+            <br />
+            <input type="submit" value="Giriş" class="btn btn-success" />
+            <b style="color:red">&nbsp; @TempData["Hata"]</b>
+        }
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
