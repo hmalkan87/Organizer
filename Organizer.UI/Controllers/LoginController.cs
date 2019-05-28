@@ -37,7 +37,7 @@ namespace Organizer.UI.Controllers
             else
             {
                 Session["User"] = user;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Event");
             }
         }
     }

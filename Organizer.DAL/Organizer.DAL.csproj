@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Organizer.Entity\Organizer.Entity.csproj">
-      <Project>{42026fb9-f60a-443d-81dc-08dae042e701}</Project>
+      <Project>{0ab7668e-8b26-49c2-8468-af63cdf6b275}</Project>
       <Name>Organizer.Entity</Name>
     </ProjectReference>
   </ItemGroup>

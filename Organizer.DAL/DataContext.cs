@@ -27,6 +27,10 @@ namespace Organizer.DAL
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Users>()
+                .HasOptional(e => e.Events)
+                .WithRequired(e => e.Users);
+
+            modelBuilder.Entity<Users>()
                 .HasMany(e => e.Messages)
                 .WithRequired(e => e.Users)
                 .HasForeignKey(e => e.SenderID)
