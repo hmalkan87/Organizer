@@ -27,7 +27,7 @@ namespace Organizer.UI.Controllers
 
             Users user = loginBLL.LoginUser(model.UserName, model.Password);
 
-            TempData["UserName"] = model.UserName.ToString();
+            //TempData["UserName"] = model.UserName.ToString();
 
             if (user == null)
             {
@@ -39,6 +39,15 @@ namespace Organizer.UI.Controllers
                 Session["User"] = user;
                 return RedirectToAction("Index", "Event");
             }
+        }
+
+        public ActionResult Logout()
+        {
+            if (Session["User"] != null)
+            {
+                Session["User"] = null;
+            }
+            return RedirectToAction("Index");
         }
     }
 }

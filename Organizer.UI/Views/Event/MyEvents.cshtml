@@ -5,70 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>MyEvents</h2>
+<h2>Etkinliklerim</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("+ Yeni Etkinlik", "CreateEvent")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Resim
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerID)
+            Etkinlik Adı
+        </th>
+        @*<th>
+            Oluşturan Kişi
+        </th>*@
+        <th>
+            Kontenjan
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Capacity)
+            Etkinlik Tarihi
+        </th>
+        @*<th>
+            Kategori
+        </th>*@
+        <th>
+            Başvuru Tarihi
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EventDate)
+            Açıklama
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApplicationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Picture)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Picture)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OwnerID)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.OwnerID)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Capacity)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EventDate)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CategoryID)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ApplicationDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Picture)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Düzenle", "UpdateEvent", new { id = item.ID }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+            @Html.ActionLink("Sil", "DeleteEvent", new { id = item.ID })
         </td>
     </tr>
 }

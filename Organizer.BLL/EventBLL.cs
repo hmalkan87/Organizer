@@ -29,5 +29,23 @@ namespace Organizer.BLL
             List<Events> myEvents = db.Events.Where(x => x.OwnerID == ownerID).ToList();
             return myEvents;
         }
+
+        public Events GetEvent(int eventID)
+        {
+            Events theEvent = db.Events.Where(x => x.ID == eventID).FirstOrDefault();
+            return theEvent;
+        }
+
+        public void UpdateEvent()
+        {
+            db.SaveChanges();
+        }
+
+        public void DeleteEvent(int eventID)
+        {
+            Events theEvent = db.Events.Where(x => x.ID == eventID).FirstOrDefault();
+            db.Events.Remove(theEvent);
+            db.SaveChanges();
+        }
     }
 }

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Etkinlikler</h2>
+<h2>Tüm Etkinlikler</h2>
 
 <p>
     @Html.ActionLink("+ Yeni Etkinlik", "CreateEvent")
@@ -13,31 +13,37 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Resim
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerID)
+            Etkinlik Adı
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Capacity)
+            Oluşturan Kişi
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EventDate)
+            Kontenjan
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryID)
+            Etkinlik Tarihi
+        </th>
+        @*<th>
+            Kategori
+        </th>*@
+        <th>
+            Başvuru Tarihi
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApplicationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Açıklama
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Picture)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -50,9 +56,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.EventDate)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.CategoryID)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ApplicationDate)
         </td>
@@ -61,8 +67,8 @@
         </td>
         <td>
             @*@Html.ActionLink("Düzenle", "Edit", new { id=item.ID }) |*@
-            @Html.ActionLink("Detaylar", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Sil", "Delete", new { id=item.ID })
+            @Html.ActionLink("Detaylar", "Details", new { id = item.ID })
+            @*@Html.ActionLink("Sil", "Delete", new { id=item.ID })*@
         </td>
     </tr>
 }

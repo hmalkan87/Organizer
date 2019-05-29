@@ -20,8 +20,7 @@ namespace Organizer.UI.Controllers
         [HttpGet]
         public ActionResult CreateEvent()
         {
-            Events EmptyEvent = new Events();
-            return View(EmptyEvent);
+            return View();
         }
 
         [HttpPost]
@@ -38,6 +37,31 @@ namespace Organizer.UI.Controllers
             Users user = Session["User"] as Users;
             List<Events> myEvents = eventBLL.GetMyEvents(user.ID);
             return View(myEvents);
+        }
+
+        [HttpGet]
+        public ActionResult UpdateEvent(int id)
+        {
+            Events theEvent = eventBLL.GetEvent(id);
+            return View(theEvent);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateEvent(Events updatedEvent)
+        {
+            Events eventInDB = eventBLL.GetEvent(updatedEvent.ID);
+            eventInDB.Name = updatedEvent.Name;
+            eventInDB.Picture = updatedEvent.Picture;
+            eventInDB.Capacity = updatedEvent.Capacity;
+            eventInDB.Description = updatedEvent.Description;
+            eventBLL.UpdateEvent();
+            return RedirectToAction("MyEvents");
+        }
+
+        public ActionResult DeleteEvent(int id)
+        {
+            eventBLL.DeleteEvent(id);
+            return RedirectToAction("MyEvents");
         }
     }
 }
