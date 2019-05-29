@@ -157,10 +157,12 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +209,8 @@
     <Content Include="Views\Event\MyEvents.cshtml" />
     <Content Include="Views\Event\CreateEvent.cshtml" />
     <Content Include="Views\Event\UpdateEvent.cshtml" />
+    <Content Include="Views\Message\MyMessages.cshtml" />
+    <Content Include="Views\Message\MyMessages2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

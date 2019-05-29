@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Organizer.Entity.Messages>
+
+@{
+    ViewBag.Title = "MyMessages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>MyMessages</h2>
+@{ 
+    
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Gönderen
+        </th>
+        <th>
+            Mesaj
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{ itemSenderName = item.SenderID }
+            @Html.DisplayFor(modelItem => item.SenderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MessageText)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id = item.SenderID */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+    @{//TODO Gönderen Adı gösterilecek}
+</table>

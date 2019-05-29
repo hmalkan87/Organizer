@@ -1,0 +1,50 @@
+﻿using Organizer.BLL;
+using Organizer.Entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Organizer.UI.Controllers
+{
+    public class MessageController : Controller
+    {
+        MessageBLL messageBLL = new MessageBLL();
+        UserBLL userBLL = new UserBLL();
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult MyMessages()
+        {
+            
+            //Messages message = messageBLL.GetMessage() ;
+            Users user1 = userBLL.GetUser(message.SenderID);
+
+            TempData["SenderName"] = user1.Name;
+            Users user = Session["User"] as Users;
+            List<Messages> messageList = messageBLL.MyMessages(user.ID);
+            return View(messageList);
+
+            //TODO burayı Message modeli oluşturup içine Messages tablosundan MessageText, Users tablosundan Name kısımlarını alarak yapmaya çalış
+        }
+
+        public ActionResult MyMessages2()
+        {
+
+            //Messages message = messageBLL.GetMessage() ;
+            //Users user1 = userBLL.GetUser(message.SenderID);
+
+            //TempData["SenderName"] = user1.Name;
+            Users user = Session["User"] as Users;
+            List<Messages> messageList = messageBLL.MyMessages(user.ID);
+            return View(messageList);
+
+            //TODO burayı Message modeli oluşturup içine Messages tablosundan MessageText, Users tablosundan Name kısımlarını alarak yapmaya çalış
+        }
+
+    }
+}
