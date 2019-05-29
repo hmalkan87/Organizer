@@ -50,5 +50,9 @@ namespace Organizer.UI.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        //TODO subscriberID, ownerID kolonları eklenecek UserEvent tablosuna
+        //TODO silerken pop up çıkacak
+        //TODO mesajlaşma yapılacak
     }
 }
