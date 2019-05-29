@@ -9,7 +9,6 @@ namespace Organizer.Entity
     [Table("UserEvent")]
     public partial class UserEvent
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         public int UserID { get; set; }

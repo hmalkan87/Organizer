@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2018
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.UI", "Organizer.UI\Organizer.UI.csproj", "{400A56B6-F78E-4C99-AF60-6A73EDE7C346}"
 EndProject
@@ -9,7 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.DAL", "Organizer.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.BLL", "Organizer.BLL\Organizer.BLL.csproj", "{03CAF434-5E4C-490A-845F-1C3C4A851784}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.Entity", "Organizer.Entity\Organizer.Entity.csproj", "{0AB7668E-8B26-49C2-8468-AF63CDF6B275}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.Entity", "Organizer.Entity\Organizer.Entity.csproj", "{27786108-E9C9-4692-AF17-732FA5631ADC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B6FAFBF7-2406-485E-9BB0-07C6CD05EB79}"
+	ProjectSection(SolutionItems) = preProject
+		DBSchemaAndData.txt = DBSchemaAndData.txt
+		DBSchemaOnly.txt = DBSchemaOnly.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +35,10 @@ Global
 		{03CAF434-5E4C-490A-845F-1C3C4A851784}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03CAF434-5E4C-490A-845F-1C3C4A851784}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03CAF434-5E4C-490A-845F-1C3C4A851784}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0AB7668E-8B26-49C2-8468-AF63CDF6B275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0AB7668E-8B26-49C2-8468-AF63CDF6B275}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0AB7668E-8B26-49C2-8468-AF63CDF6B275}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0AB7668E-8B26-49C2-8468-AF63CDF6B275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27786108-E9C9-4692-AF17-732FA5631ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27786108-E9C9-4692-AF17-732FA5631ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27786108-E9C9-4692-AF17-732FA5631ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27786108-E9C9-4692-AF17-732FA5631ADC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
