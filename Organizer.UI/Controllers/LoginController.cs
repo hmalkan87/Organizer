@@ -15,6 +15,7 @@ namespace Organizer.UI.Controllers
         public ActionResult Index()
         {
             return View();
+
         }
 
         public ActionResult Login(LoginModel model)
