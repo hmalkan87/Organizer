@@ -47,5 +47,17 @@ namespace Organizer.BLL
             db.Events.Remove(theEvent);
             db.SaveChanges();
         }
+
+        public void JoinEvent(UserEvent userEvent)
+        {
+            db.UserEvent.Add(userEvent);
+            db.SaveChanges();
+        }
+
+        public List<UserEvent> GetIJoined(int userID)
+        {
+            List<UserEvent> userEvent = db.UserEvent.Where(x => x.UserID == userID).ToList();
+            return userEvent;
+        }
     }
 }

@@ -13,7 +13,12 @@ namespace Organizer.UI.Controllers
         EventBLL eventBLL = new EventBLL();
         public ActionResult Index()
         {
+
+            
+
             List<Events> eventList = eventBLL.ListEvents();
+
+
             return View(eventList);
         }
 
@@ -62,6 +67,23 @@ namespace Organizer.UI.Controllers
         {
             eventBLL.DeleteEvent(id);
             return RedirectToAction("MyEvents");
+        }
+
+        public ActionResult JoinEvent(int id)
+        {
+            Users user = Session["User"] as Users;
+            UserEvent userEvent = new UserEvent();
+            userEvent.EventID = id;
+            userEvent.UserID = user.ID;
+            eventBLL.JoinEvent(userEvent);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult IJoined()
+        {
+            Users user = Session["User"] as Users;
+            List<UserEvent> userEvent = eventBLL.GetIJoined(user.ID);
+            return View(userEvent);
         }
     }
 }

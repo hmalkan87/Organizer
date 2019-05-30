@@ -12,6 +12,12 @@ namespace Organizer.BLL
     {
         DataContext db = new DataContext();
 
+        public void InsertUser(Users user)
+        {
+            db.Users.Add(user);
+            db.SaveChanges();
+        }
+
         public Users GetUser(int userID)
         {
             Users user = db.Users.Where(x => x.ID == userID).FirstOrDefault();

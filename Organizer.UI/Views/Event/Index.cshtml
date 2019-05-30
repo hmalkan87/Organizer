@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Organizer.Entity.Events>
-
+@using Organizer.Entity
+@using Organizer.BLL
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,8 +29,8 @@
             Etkinlik Tarihi
         </th>
         @*<th>
-            Kategori
-        </th>*@
+                Kategori
+            </th>*@
         <th>
             Başvuru Tarihi
         </th>
@@ -39,38 +40,57 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Picture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Capacity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventDate)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.CategoryID)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @*@Html.ActionLink("Düzenle", "Edit", new { id=item.ID }) |*@
-            @Html.ActionLink("Detaylar", "Details", new { id = item.ID })
-            @*@Html.ActionLink("Sil", "Delete", new { id=item.ID })*@
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Picture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDate)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CategoryID)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @*@Html.ActionLink("Düzenle", "Edit", new { id=item.ID }) |*@
+                @Html.ActionLink("Detaylar", "Details", new { id = item.ID })
+
+                @{
+                    EventBLL eventBLL = new EventBLL();
+                    Users user = Session["User"] as Users;
+                    List<UserEvent> uel = eventBLL.GetIJoined(user.ID);
+
+
+                    foreach (UserEvent ue in uel)
+                    {
+                        if (ue.EventID != item.ID)
+                        {
+                            @Html.ActionLink("Katıl", "JoinEvent", new { id = item.ID });
+
+                        }
+                        //TODO iki defa Katıl linki koyuyor, düzelt. Databasedeki veri sayısına göre değişebilir kaç defa yazdığı.
+
+                    }
+                }
+
+            </td>
+        </tr>
+    }
 
 </table>

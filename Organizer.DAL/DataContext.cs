@@ -50,5 +50,9 @@ namespace Organizer.DAL
                 .HasForeignKey(e => e.UserID)
                 .WillCascadeOnDelete(false);
         }
+
+        //TODO bir tablodan bir kolonu diðer tablodan bir kolonu göstermek istediðimizde yeni model oluþturmaya dair bir örnek yapar mýsýnýz?
+
+        //TODO Resim göstermeyi Levent'ten öðren
     }
 }
