@@ -1,5 +1,6 @@
 ﻿using Organizer.BLL;
 using Organizer.Entity;
+using Organizer.UI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,34 +18,40 @@ namespace Organizer.UI.Controllers
         {
             return View();
         }
-
         public ActionResult MyMessages()
         {
+            Users user = Session["User"] as Users;
+            List<Messages> messageList = messageBLL.MyMessages(user.ID);
+            return View(messageList);
+        }
+
+        //public ActionResult MyMessages()
+        //{
             
-            //Messages message = messageBLL.GetMessage() ;
-            Users user1 = userBLL.GetUser(message.SenderID);
+        //    //Messages message = messageBLL.GetMessage() ;
+        //    Users user1 = userBLL.GetUser(message.SenderID);
 
-            TempData["SenderName"] = user1.Name;
-            Users user = Session["User"] as Users;
-            List<Messages> messageList = messageBLL.MyMessages(user.ID);
-            return View(messageList);
+        //    TempData["SenderName"] = user1.Name;
+        //    Users user = Session["User"] as Users;
+        //    List<Messages> messageList = messageBLL.MyMessages(user.ID);
+        //    return View(messageList);
 
-            //TODO burayı Message modeli oluşturup içine Messages tablosundan MessageText, Users tablosundan Name kısımlarını alarak yapmaya çalış
-        }
+        //  //TODO burayı Message modeli oluşturup içine Messages tablosundan MessageText, Users tablosundan Name kısımlarını alarak yapmaya çalış
+        //}
 
-        public ActionResult MyMessages2()
-        {
+        //public ActionResult MyMessages2()
+        //{
 
-            //Messages message = messageBLL.GetMessage() ;
-            //Users user1 = userBLL.GetUser(message.SenderID);
+        //    //Messages message = messageBLL.GetMessage() ;
+        //    //Users user1 = userBLL.GetUser(message.SenderID);
 
-            //TempData["SenderName"] = user1.Name;
-            Users user = Session["User"] as Users;
-            List<Messages> messageList = messageBLL.MyMessages(user.ID);
-            return View(messageList);
+        //    //TempData["SenderName"] = user1.Name;
+        //    Users user = Session["User"] as Users;
+        //    List<Messages> messageList = messageBLL.MyMessages(user.ID);
+        //    return View(messageList);
 
-            //TODO burayı Message modeli oluşturup içine Messages tablosundan MessageText, Users tablosundan Name kısımlarını alarak yapmaya çalış
-        }
-
+        //   //TODO burayı Message modeli oluşturup içine Messages tablosundan MessageText, Users tablosundan Name kısımlarını alarak yapmaya çalış
+        //}
+        
     }
 }

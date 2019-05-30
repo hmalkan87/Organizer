@@ -5,18 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>MyMessages</h2>
-@{ 
-    
-}
+<h2>Mesajlarım</h2>
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
     <tr>
         <th>
             Gönderen
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ReceiverID)
+        </th>*@
         <th>
             Mesaj
         </th>
@@ -26,18 +27,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @{ itemSenderName = item.SenderID }
-            @Html.DisplayFor(modelItem => item.SenderID)
+            @*@Html.DisplayFor(modelItem => item.SenderID)*@
+            @Html.DisplayFor(modelItem => item.Users.Name)
+
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ReceiverID)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.MessageText)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id = item.SenderID */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
+            @Html.ActionLink("Sil", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
-    @{//TODO Gönderen Adı gösterilecek}
+
 </table>

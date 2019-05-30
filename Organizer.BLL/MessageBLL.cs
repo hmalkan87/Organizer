@@ -23,5 +23,11 @@ namespace Organizer.BLL
             Messages message = db.Messages.Where(x => x.ID == messageID).FirstOrDefault();
             return message;
         }
+
+        public Users getUser(int userId)
+        {
+            Users user = db.Users.Where(x => x.ID == userId).FirstOrDefault();
+            return user;
+        }
     }
 }

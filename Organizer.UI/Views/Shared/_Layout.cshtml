@@ -37,9 +37,7 @@
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     @if (Session["User"] != null)
                     {
-
-                        <li> </li>
-                        <li>@Html.ActionLink(user.Name,"","", new { @class = "n" })</li>
+                        <li>@Html.ActionLink(user.Name,"","")</li>
                         <li>@Html.ActionLink("Tüm Etkinlikler", "Index", "Event")</li>
                         <li>@Html.ActionLink("Etkinliklerim", "MyEvents", "Event")</li>
                         <li>@Html.ActionLink("Mesajlarım", "MyMessages", "Message")</li>
