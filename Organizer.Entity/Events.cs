@@ -24,6 +24,8 @@ namespace Organizer.Entity
 
         public int Capacity { get; set; }
 
+        public int? NumberOfJoined { get; set; }
+
         public DateTime EventDate { get; set; }
 
         public int? CategoryID { get; set; }

@@ -50,10 +50,10 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OwnerID)
+                @Html.DisplayFor(modelItem => item.Users.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Capacity)
+                @Html.DisplayFor(modelItem => item.NumberOfJoined)/@Html.DisplayFor(modelItem => item.Capacity)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EventDate)
@@ -76,17 +76,62 @@
                     Users user = Session["User"] as Users;
                     List<UserEvent> uel = eventBLL.GetIJoined(user.ID);
 
+                    @*//BİRİNCİ ÇÖZÜM
+                        int joined = 0;
+                        foreach (UserEvent ue in uel)
+                        {
+                            if (ue.EventID == item.ID)
+                            {
+                                @Html.Label("Katıldın")
+                                joined++;
+                            }
+                        }
 
-                    foreach (UserEvent ue in uel)
-                    {
-                        if (ue.EventID != item.ID)
+                        if (joined == 0)
                         {
                             @Html.ActionLink("Katıl", "JoinEvent", new { id = item.ID });
+                        }*@
 
+                    //TODO hangisi daha hızlı çalışır sor
+
+                    //İKİNCİ ÇÖZÜM
+                    var list = new List<int>();
+                    foreach (UserEvent ue in uel)
+                    {
+                        list.Add(ue.EventID);
+                    }
+
+                    if (item.NumberOfJoined < item.Capacity)
+                    {
+                        if (list.Contains(item.ID))
+                        {
+                            @*@Html.ActionLink("Ayrıl", "LeaveEvent", new { id = item.ID, capacity = item.Capacity }) //TODO ayrılma linkini kırmızı yap*@
+
+                            <a href="" style="color: red">Ayrıl</a>
                         }
-                        //TODO iki defa Katıl linki koyuyor, düzelt. Databasedeki veri sayısına göre değişebilir kaç defa yazdığı.
+                        else
+                        {
+                            @Html.ActionLink("Katıl", "JoinEvent", new { id = item.ID, capacity = item.Capacity, numberOfJoined = item.NumberOfJoined });
+                        }
+                    }
+                    else
+                    {
+                        if (list.Contains(item.ID))
+                        {
+                            <a href="" style="color: red">Ayrıl</a>
+                            @*@Html.ActionLink("Ayrıl", "LeaveEvent", new { id = item.ID, capacity = item.Capacity }); //TODO ayrılma linkini kırmızı yap*@
+                        }
+                        else
+                        {
+                            <b style="color: darkmagenta">Dolu!</b>
+                        }
 
                     }
+
+
+
+
+
                 }
 
             </td>

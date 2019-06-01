@@ -243,7 +243,7 @@
       <Name>Organizer.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Organizer.Entity\Organizer.Entity.csproj">
-      <Project>{27786108-e9c9-4692-af17-732fa5631adc}</Project>
+      <Project>{b1ca9805-74c3-4d9a-ae48-af911c2a9fc1}</Project>
       <Name>Organizer.Entity</Name>
     </ProjectReference>
   </ItemGroup>

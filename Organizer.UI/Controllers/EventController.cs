@@ -14,7 +14,7 @@ namespace Organizer.UI.Controllers
         public ActionResult Index()
         {
 
-            
+
 
             List<Events> eventList = eventBLL.ListEvents();
 
@@ -33,6 +33,7 @@ namespace Organizer.UI.Controllers
         {
             Users user = Session["User"] as Users;
             filledEvent.OwnerID = user.ID;
+            filledEvent.NumberOfJoined = 0;
             eventBLL.InsertEvent(filledEvent);
             return RedirectToAction("MyEvents");
         }
@@ -69,13 +70,36 @@ namespace Organizer.UI.Controllers
             return RedirectToAction("MyEvents");
         }
 
-        public ActionResult JoinEvent(int id)
+        public ActionResult JoinEvent(int id, int capacity, int numberOfJoined)
         {
-            Users user = Session["User"] as Users;
-            UserEvent userEvent = new UserEvent();
-            userEvent.EventID = id;
-            userEvent.UserID = user.ID;
-            eventBLL.JoinEvent(userEvent);
+            //List<UserEvent> uel = new List<UserEvent>();
+            //int counter = 0;
+
+            //foreach (var ue in uel)
+            //{
+            //    if (ue.EventID == id)
+            //    {
+            //        counter++;
+            //    }
+            //}
+
+            if (!(numberOfJoined >= capacity))
+            {
+                Events theEvent = eventBLL.GetEvent(id);
+                theEvent.NumberOfJoined++;
+                Users user = Session["User"] as Users;
+                UserEvent userEvent = new UserEvent();
+                userEvent.EventID = id;
+                userEvent.UserID = user.ID;
+                eventBLL.JoinEvent(userEvent);
+            }
+            //else
+            //{
+            //    TempData["Capacity"] = "Kontenjan Dolu!";
+            //}
+
+
+
             return RedirectToAction("Index");
         }
 
@@ -85,5 +109,7 @@ namespace Organizer.UI.Controllers
             List<UserEvent> userEvent = eventBLL.GetIJoined(user.ID);
             return View(userEvent);
         }
+
+        //TODO etkinlik silindiğinde katılmış olan herkese mesaj gidecek
     }
 }

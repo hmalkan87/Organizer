@@ -9,13 +9,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.DAL", "Organizer.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.BLL", "Organizer.BLL\Organizer.BLL.csproj", "{03CAF434-5E4C-490A-845F-1C3C4A851784}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.Entity", "Organizer.Entity\Organizer.Entity.csproj", "{27786108-E9C9-4692-AF17-732FA5631ADC}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B6FAFBF7-2406-485E-9BB0-07C6CD05EB79}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Organizer.Entity", "Organizer.Entity\Organizer.Entity.csproj", "{B1CA9805-74C3-4D9A-AE48-AF911C2A9FC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GuncelDBScriptler", "GuncelDBScriptler", "{B465F05D-E5D1-4334-A35A-757576B0F0D4}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Users\pc\Documents\schemaAndData.sql = ..\..\Users\pc\Documents\schemaAndData.sql
+		..\..\Users\pc\Documents\schemaOnly.sql = ..\..\Users\pc\Documents\schemaOnly.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EskiDBScriptler", "EskiDBScriptler", "{FB1774EB-405E-4403-9766-C649717CEE71}"
 	ProjectSection(SolutionItems) = preProject
 		DBSchemaAndData.txt = DBSchemaAndData.txt
 		DBSchemaOnly.txt = DBSchemaOnly.txt
-		ReadMe.txt = ReadMe.txt
 	EndProjectSection
 EndProject
 Global
@@ -36,13 +46,17 @@ Global
 		{03CAF434-5E4C-490A-845F-1C3C4A851784}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03CAF434-5E4C-490A-845F-1C3C4A851784}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03CAF434-5E4C-490A-845F-1C3C4A851784}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27786108-E9C9-4692-AF17-732FA5631ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27786108-E9C9-4692-AF17-732FA5631ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27786108-E9C9-4692-AF17-732FA5631ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27786108-E9C9-4692-AF17-732FA5631ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1CA9805-74C3-4D9A-AE48-AF911C2A9FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CA9805-74C3-4D9A-AE48-AF911C2A9FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CA9805-74C3-4D9A-AE48-AF911C2A9FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CA9805-74C3-4D9A-AE48-AF911C2A9FC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B465F05D-E5D1-4334-A35A-757576B0F0D4} = {B6FAFBF7-2406-485E-9BB0-07C6CD05EB79}
+		{FB1774EB-405E-4403-9766-C649717CEE71} = {B6FAFBF7-2406-485E-9BB0-07C6CD05EB79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A157ADC3-36FF-485F-9540-6DA739E44447}
