@@ -13,12 +13,7 @@ namespace Organizer.UI.Controllers
         EventBLL eventBLL = new EventBLL();
         public ActionResult Index()
         {
-
-
-
             List<Events> eventList = eventBLL.ListEvents();
-
-
             return View(eventList);
         }
 
@@ -30,7 +25,7 @@ namespace Organizer.UI.Controllers
 
         [HttpPost]
         public ActionResult CreateEvent(Events filledEvent)
-        {
+        {//TODO event oluşturunca otomatik olarak katılmış olsun.
             Users user = Session["User"] as Users;
             filledEvent.OwnerID = user.ID;
             filledEvent.NumberOfJoined = 0;
@@ -72,18 +67,7 @@ namespace Organizer.UI.Controllers
 
         public ActionResult JoinEvent(int id, int capacity, int numberOfJoined)
         {
-            //List<UserEvent> uel = new List<UserEvent>();
-            //int counter = 0;
-
-            //foreach (var ue in uel)
-            //{
-            //    if (ue.EventID == id)
-            //    {
-            //        counter++;
-            //    }
-            //}
-
-            if (!(numberOfJoined >= capacity))
+            if (numberOfJoined < capacity) //TODO bu şartı kaldırabilirsin. iki tane parametreye de gerek kalmaz. zaten katıl linki görünmüyor şart sağlanmadıkça.
             {
                 Events theEvent = eventBLL.GetEvent(id);
                 theEvent.NumberOfJoined++;
@@ -91,15 +75,17 @@ namespace Organizer.UI.Controllers
                 UserEvent userEvent = new UserEvent();
                 userEvent.EventID = id;
                 userEvent.UserID = user.ID;
-                eventBLL.JoinEvent(userEvent);
+                eventBLL.InsertUserEvent(userEvent);
             }
-            //else
-            //{
-            //    TempData["Capacity"] = "Kontenjan Dolu!";
-            //}
+            return RedirectToAction("Index");
+        }
 
-
-
+        public ActionResult LeaveEvent(int id)
+        {//TODO buraya numberOfJoined > 0 şartı konulabilir. ama zaten viewde Ayrıl linki görünmez oluyo, bu şarta gerek kalmıyo.
+            Events theEvent = eventBLL.GetEvent(id);
+            theEvent.NumberOfJoined--;
+            UserEvent userEvent = eventBLL.GetUserEvent(id);
+            eventBLL.DeleteUserEvent(userEvent);
             return RedirectToAction("Index");
         }
 

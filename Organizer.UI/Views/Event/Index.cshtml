@@ -51,6 +51,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Users.Name)
+                @Html.ActionLink("Mesaj Gönder", "SendMessage", "Message", new { ownerID = item.Users.ID }, htmlAttributes: new { })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumberOfJoined)/@Html.DisplayFor(modelItem => item.Capacity)
@@ -105,9 +106,9 @@
                     {
                         if (list.Contains(item.ID))
                         {
-                            @*@Html.ActionLink("Ayrıl", "LeaveEvent", new { id = item.ID, capacity = item.Capacity }) //TODO ayrılma linkini kırmızı yap*@
+                            @Html.ActionLink("Ayrıl", "LeaveEvent", new { id = item.ID }) //TODO ayrılma linkini kırmızı yap
 
-                            <a href="" style="color: red">Ayrıl</a>
+                            @*<a href="Event/LeaveEvent" style="color: red">Ayrıl</a>*@ //TODO id ile göndermeyi öğren
                         }
                         else
                         {
@@ -118,8 +119,8 @@
                     {
                         if (list.Contains(item.ID))
                         {
-                            <a href="" style="color: red">Ayrıl</a>
-                            @*@Html.ActionLink("Ayrıl", "LeaveEvent", new { id = item.ID, capacity = item.Capacity }); //TODO ayrılma linkini kırmızı yap*@
+                            @*<a href="Event/LeaveEvent" style="color: red">Ayrıl</a>*@
+                            @Html.ActionLink("Ayrıl", "LeaveEvent", new { id = item.ID }); //TODO ayrılma linkini kırmızı yap
                         }
                         else
                         {

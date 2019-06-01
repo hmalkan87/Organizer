@@ -21,8 +21,27 @@ namespace Organizer.UI.Controllers
         public ActionResult MyMessages()
         {
             Users user = Session["User"] as Users;
-            List<Messages> messageList = messageBLL.MyMessages(user.ID);
+            List<Messages> messageList = messageBLL.GetMyMessages(user.ID);
             return View(messageList);
+        }
+
+        [HttpGet]
+        public ActionResult SendMessage(int ownerID)
+        {
+            Messages message = new Messages();
+            message.ReceiverID = ownerID;
+            return View(message);
+        }
+
+        [HttpPost]
+        public ActionResult SendMessage2(Messages message/*int ownerID*/)
+        {
+            Users user = Session["User"] as Users;
+            //Messages message = new Messages();
+            message.SenderID = user.ID;
+            //message.ReceiverID = ownerID;
+            messageBLL.InsertMessage(message);
+            return RedirectToAction("Index", "Event");
         }
 
         //public ActionResult MyMessages()

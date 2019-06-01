@@ -48,15 +48,27 @@ namespace Organizer.BLL
             db.SaveChanges();
         }
 
-        public void JoinEvent(UserEvent userEvent)
+        public void InsertUserEvent(UserEvent userEvent)
         {
             db.UserEvent.Add(userEvent);
+            db.SaveChanges();
+        }
+
+        public void DeleteUserEvent(UserEvent userEvent)
+        {
+            db.UserEvent.Remove(userEvent);
             db.SaveChanges();
         }
 
         public List<UserEvent> GetIJoined(int userID)
         {
             List<UserEvent> userEvent = db.UserEvent.Where(x => x.UserID == userID).ToList();
+            return userEvent;
+        }
+
+        public UserEvent GetUserEvent(int eventID)
+        {
+            UserEvent userEvent = db.UserEvent.Where(x => x.EventID == eventID).FirstOrDefault();
             return userEvent;
         }
     }

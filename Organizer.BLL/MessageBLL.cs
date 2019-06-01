@@ -12,9 +12,9 @@ namespace Organizer.BLL
     {
         DataContext db = new DataContext();
 
-        public List<Messages> MyMessages(int messageID)
+        public List<Messages> GetMyMessages(int receiverID)
         {
-            List<Messages> messageList = db.Messages.Where(x => x.ID == messageID).ToList();
+            List<Messages> messageList = db.Messages.Where(x => x.ReceiverID == receiverID).ToList();
             return messageList;
         }
 
@@ -28,6 +28,12 @@ namespace Organizer.BLL
         {
             Users user = db.Users.Where(x => x.ID == userId).FirstOrDefault();
             return user;
+        }
+
+        public void InsertMessage(Messages message)
+        {
+            db.Messages.Add(message);
+            db.SaveChanges();
         }
     }
 }
