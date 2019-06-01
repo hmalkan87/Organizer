@@ -16,33 +16,34 @@
             Gönderen
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.ReceiverID)
-        </th>*@
+                @Html.DisplayNameFor(model => model.ReceiverID)
+            </th>*@
         <th>
             Mesaj
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.SenderID)*@
-            @Html.DisplayFor(modelItem => item.Users.Name)
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.SenderID)*@
+                @Html.DisplayFor(modelItem => item.Users.Name)
 
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.ReceiverID)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageText)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |*@
-            @Html.ActionLink("Sil", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.ReceiverID)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageText)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |*@
+                @Html.ActionLink("Cevapla", "ReplyMessage", new { senderID = item.SenderID }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

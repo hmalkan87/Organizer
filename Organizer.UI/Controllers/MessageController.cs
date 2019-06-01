@@ -34,14 +34,20 @@ namespace Organizer.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult SendMessage2(Messages message/*int ownerID*/)
+        public ActionResult SendMessage(Messages message)
         {
             Users user = Session["User"] as Users;
-            //Messages message = new Messages();
             message.SenderID = user.ID;
-            //message.ReceiverID = ownerID;
             messageBLL.InsertMessage(message);
             return RedirectToAction("Index", "Event");
+        }
+
+        [HttpGet]
+        public ActionResult ReplyMessage(int senderID)
+        {
+            Messages message = new Messages();
+            message.ReceiverID = senderID;
+            return View(message);
         }
 
         //public ActionResult MyMessages()
