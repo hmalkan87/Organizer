@@ -71,5 +71,11 @@ namespace Organizer.BLL
             UserEvent userEvent = db.UserEvent.Where(x => x.EventID == eventID).FirstOrDefault();
             return userEvent;
         }
+
+        public List<UserEvent> ListUserEvents(int eventID)
+        {
+            List<UserEvent> userEventList = db.UserEvent.Where(x => x.EventID == eventID).ToList();
+            return userEventList;
+        }
     }
 }

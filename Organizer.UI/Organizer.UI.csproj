@@ -217,6 +217,7 @@
     <Content Include="Views\Event\IJoined.cshtml" />
     <Content Include="Views\Message\SendMessage.cshtml" />
     <Content Include="Views\Message\ReplyMessage.cshtml" />
+    <Content Include="Views\Event\EventDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

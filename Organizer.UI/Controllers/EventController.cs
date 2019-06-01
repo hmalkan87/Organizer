@@ -53,6 +53,8 @@ namespace Organizer.UI.Controllers
             Events eventInDB = eventBLL.GetEvent(updatedEvent.ID);
             eventInDB.Name = updatedEvent.Name;
             eventInDB.Picture = updatedEvent.Picture;
+            eventInDB.EventDate = updatedEvent.EventDate;
+            eventInDB.ApplicationDate = updatedEvent.ApplicationDate;
             eventInDB.Capacity = updatedEvent.Capacity;
             eventInDB.Description = updatedEvent.Description;
             eventBLL.UpdateEvent();
@@ -94,6 +96,12 @@ namespace Organizer.UI.Controllers
             Users user = Session["User"] as Users;
             List<UserEvent> userEvent = eventBLL.GetIJoined(user.ID);
             return View(userEvent);
+        }
+
+        public ActionResult EventDetails(int id)
+        {
+            List<UserEvent> userEventList = eventBLL.ListUserEvents(id);
+            return View(userEventList);
         }
 
         //TODO etkinlik silindiğinde katılmış olan herkese mesaj gidecek
