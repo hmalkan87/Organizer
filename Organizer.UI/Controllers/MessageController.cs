@@ -50,6 +50,11 @@ namespace Organizer.UI.Controllers
             return View(message);
         }
 
+        public ActionResult DeleteMessage(int id)
+        {//TODO veritabanına IsDeleted kolonu ekleyip silinen mesajın IsDeleted değerini true ya da 1 yaparak hallet
+            messageBLL.DeleteMessage(id);
+            return RedirectToAction("MyMessages");
+        }
         //public ActionResult MyMessages()
         //{
             

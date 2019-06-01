@@ -60,7 +60,7 @@ namespace Organizer.UI.Controllers
         }
 
         public ActionResult DeleteEvent(int id)
-        {
+        {//TODO IsDeleted kolonu ekleyip yap
             eventBLL.DeleteEvent(id);
             return RedirectToAction("MyEvents");
         }

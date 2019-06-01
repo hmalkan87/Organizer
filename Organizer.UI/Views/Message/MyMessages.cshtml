@@ -41,7 +41,7 @@
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |*@
                 @Html.ActionLink("Cevapla", "ReplyMessage", new { senderID = item.SenderID }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+                @Html.ActionLink("Sil", "DeleteMessage", new { id = item.ID })
             </td>
         </tr>
     }

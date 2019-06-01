@@ -24,15 +24,22 @@ namespace Organizer.BLL
             return message;
         }
 
-        public Users getUser(int userId)
-        {
-            Users user = db.Users.Where(x => x.ID == userId).FirstOrDefault();
-            return user;
-        }
+        //public Users getUser(int userId)
+        //{
+        //    Users user = db.Users.Where(x => x.ID == userId).FirstOrDefault();
+        //    return user;
+        //}
 
         public void InsertMessage(Messages message)
         {
             db.Messages.Add(message);
+            db.SaveChanges();
+        }
+
+        public void DeleteMessage(int messageID)
+        {
+            Messages message = db.Messages.Where(x => x.ID == messageID).FirstOrDefault();
+            db.Messages.Remove(message);
             db.SaveChanges();
         }
     }
