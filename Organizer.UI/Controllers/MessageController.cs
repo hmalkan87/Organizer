@@ -30,6 +30,8 @@ namespace Organizer.UI.Controllers
         {
             Messages message = new Messages();//eğer burda da SendBulkMessage ekşınlarındaki gibi kurgulasaydık o çokomelli yere gerek kalmayacaktı.
             message.ReceiverID = ownerID;
+            Users user = userBLL.GetUser(ownerID);
+            message.Users = user;
             return View(message);
         }
 

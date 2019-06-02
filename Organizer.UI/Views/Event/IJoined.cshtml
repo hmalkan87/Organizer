@@ -5,18 +5,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>IJoined</h2>
+@*@TempData["LeaveFrom"] = "IJoined";*@
+
+<h2>Katıldığım Etkinlikler</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("+ Yeni Etkinlik", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            Etkinlik ID
+            Etkinlik Adı
         </th>
         <th>
-            Katılımcı ID
+            Katılımcı Sayısı
+        </th>
+        <th>
+            Katılımcı Sayısı
         </th>
         <th></th>
     </tr>
@@ -24,15 +29,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.EventID)
+            @*@Html.DisplayFor(modelItem => item.EventID)*@
+            @Html.DisplayFor(modelItem => item.Events.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserID)
+            @Html.DisplayFor(modelItem => item.Events.NumberOfJoined)/@Html.DisplayFor(modelItem => item.Events.Capacity)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.Events.Users.Name)
+            @Html.ActionLink("Mesaj Gönder", "SendMessage", "Message", new { ownerID = item.Events.OwnerID }, htmlAttributes: new { })
+
+        </td>
+        <td>
+            @Html.ActionLink("Ayrıl", "LeaveEvent", "Event", new { id = item.Events.ID }, htmlAttributes: new { })
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
         </td>
     </tr>
 }

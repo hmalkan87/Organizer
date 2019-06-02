@@ -13,6 +13,7 @@ namespace Organizer.UI.Controllers
         EventBLL eventBLL = new EventBLL();
         public ActionResult Index()
         {
+            TempData["LeaveFrom"] = "Index";
             List<Events> eventList = eventBLL.ListEvents();
             return View(eventList);
         }
@@ -62,7 +63,7 @@ namespace Organizer.UI.Controllers
         }
 
         public ActionResult DeleteEvent(int id)
-        {//TODO IsDeleted kolonu ekleyip yap
+        {//TODO IsDeleted kolonu ekleyip yap. bu haliyle zaten katılanlar ayrılmadan etkinliği silemiyor
             eventBLL.DeleteEvent(id);
             return RedirectToAction("MyEvents");
         }
@@ -88,11 +89,18 @@ namespace Organizer.UI.Controllers
             theEvent.NumberOfJoined--;
             UserEvent userEvent = eventBLL.GetUserEvent(id);
             eventBLL.DeleteUserEvent(userEvent);
+            string leaveFrom = TempData["LeaveFrom"] as string;
+            if (leaveFrom == "IJoined")
+            {
+                return RedirectToAction("IJoined");
+            }
+
             return RedirectToAction("Index");
         }
 
         public ActionResult IJoined()
         {
+            TempData["LeaveFrom"] = "IJoined";
             Users user = Session["User"] as Users;
             List<UserEvent> userEvent = eventBLL.GetIJoined(user.ID);
             return View(userEvent);
