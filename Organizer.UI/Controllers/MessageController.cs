@@ -47,6 +47,16 @@ namespace Organizer.UI.Controllers
         [HttpGet]
         public ActionResult SendBulkMessage()
         {
+            #region Bu kısım sadece Alıcılar'ı view'de gösterebilmek için
+            string receiverList = "";
+            List<UserEvent> list = TempData["Bulk"] as List<UserEvent>;
+            foreach (UserEvent item in list)
+            {
+                receiverList = receiverList + item.Users.Name + ", ";
+            }
+            ViewData["ReceiverList"] = receiverList.TrimEnd(',', ' '); 
+            #endregion
+
             return View();
         }
         
