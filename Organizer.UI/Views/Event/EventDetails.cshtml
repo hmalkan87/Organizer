@@ -1,14 +1,28 @@
-﻿@model IEnumerable<Organizer.Entity.UserEvent>
-
+﻿@*@model IEnumerable<Organizer.Entity.UserEvent>*@
+@using Organizer.Entity
+@model List<UserEvent>
 @{
     ViewBag.Title = "EventDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EventDetails</h2>
+@{
+    List<UserEvent> list = new List<UserEvent>();
+    foreach (var item in Model)
+    {
+        list.Add(item);
+        TempData["Bulk"] = list;
+        //TODO böyle yapmadan direkt modeli bir tempdataya alamaz mıyım?
+    }
+    @*<p>
+        @Html.ActionLink("Toplu Mesaj", "SendBulkMessage", "Message", new { id = list. }, htmlAttributes: new { })
+    </p>*@
+}
+
+<h2>Etkinlik Detayları</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Toplu Mesaj", "SendBulkMessage", "Message")
 </p>
 <table class="table">
     <tr>
@@ -18,17 +32,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Users.Name)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
-            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-            @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Users.Name)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+    }
 
 </table>

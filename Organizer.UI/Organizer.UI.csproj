@@ -218,6 +218,7 @@
     <Content Include="Views\Message\SendMessage.cshtml" />
     <Content Include="Views\Message\ReplyMessage.cshtml" />
     <Content Include="Views\Event\EventDetails.cshtml" />
+    <Content Include="Views\Message\SendBulkMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

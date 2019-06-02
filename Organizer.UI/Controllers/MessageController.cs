@@ -28,7 +28,7 @@ namespace Organizer.UI.Controllers
         [HttpGet]
         public ActionResult SendMessage(int ownerID)
         {
-            Messages message = new Messages();
+            Messages message = new Messages();//eğer burda da SendBulkMessage ekşınlarındaki gibi kurgulasaydık o çokomelli yere gerek kalmayacaktı.
             message.ReceiverID = ownerID;
             return View(message);
         }
@@ -40,6 +40,26 @@ namespace Organizer.UI.Controllers
             message.SenderID = user.ID;
             messageBLL.InsertMessage(message);
             return RedirectToAction("Index", "Event");
+        }
+
+        [HttpGet]
+        public ActionResult SendBulkMessage()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult SendBulkMessage(Messages message)
+        {
+            List<UserEvent> list = TempData["Bulk"] as List<UserEvent>;
+            Users user = Session["User"] as Users;
+            foreach (UserEvent item in list)
+            {
+                message.ReceiverID = item.UserID;
+                message.SenderID = user.ID;
+                messageBLL.InsertMessage(message);
+            }
+            return RedirectToAction("MyMessages");
         }
 
         [HttpGet]
@@ -57,7 +77,7 @@ namespace Organizer.UI.Controllers
         }
         //public ActionResult MyMessages()
         //{
-            
+
         //    //Messages message = messageBLL.GetMessage() ;
         //    Users user1 = userBLL.GetUser(message.SenderID);
 
@@ -82,6 +102,6 @@ namespace Organizer.UI.Controllers
 
         //   //TODO burayı Message modeli oluşturup içine Messages tablosundan MessageText, Users tablosundan Name kısımlarını alarak yapmaya çalış
         //}
-        
+
     }
 }

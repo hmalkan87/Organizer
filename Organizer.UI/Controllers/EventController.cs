@@ -104,6 +104,11 @@ namespace Organizer.UI.Controllers
             return View(userEventList);
         }
 
+        //public ActionResult MessageAll()
+        //{
+
+        //}
+
         //TODO etkinlik silindiğinde katılmış olan herkese mesaj gidecek
     }
 }
