@@ -64,6 +64,12 @@ namespace Organizer.UI.Controllers
 
         public ActionResult DeleteEvent(int id)
         {//TODO IsDeleted kolonu ekleyip yap. bu haliyle zaten katılanlar ayrılmadan etkinliği silemiyor
+            UserEvent userEvent = eventBLL.GetUserEvent(id);
+            if (userEvent != null)
+            {
+                TempData["Delete"] = "Bütün kullanıcılar ayrılmadan etkinliği silemezsiniz!";
+                return RedirectToAction("MyEvents");
+            }
             eventBLL.DeleteEvent(id);
             return RedirectToAction("MyEvents");
         }

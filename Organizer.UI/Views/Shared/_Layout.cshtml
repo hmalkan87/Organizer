@@ -23,11 +23,11 @@
                 </button>
                 @if (Session["User"] != null)
                 {
-                    @Html.ActionLink("Organizer", "Index", "Event", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("OlaylarOlaylar", "Index", "Event", new { area = "" }, new { @class = "navbar-brand" })
                 }
                 else
                 {
-                    @Html.ActionLink("Organizer", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("OlaylarOlaylar", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
                 }
             </div>
             <div class="navbar-collapse collapse">
@@ -37,12 +37,12 @@
         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     @if (Session["User"] != null)
                     {
-                        <li>@Html.ActionLink(user.Name,"","")</li>
-                        <li>@Html.ActionLink("Tüm Etkinlikler", "Index", "Event")</li>
-                        <li>@Html.ActionLink("Oluşturduklarım", "MyEvents", "Event")</li>
-                        <li>@Html.ActionLink("Katıldıklarım", "Ijoined", "Event")</li>
-                        <li>@Html.ActionLink("Mesajlarım", "MyMessages", "Message")</li>
-                        <li>@Html.ActionLink("Çıkış", "Logout", "Login")</li>
+                        <li>@Html.ActionLink("🎪Tüm Etkinlikler", "Index", "Event")</li>
+                        <li>@Html.ActionLink("📅Oluşturduklarım", "MyEvents", "Event")</li>
+                        <li>@Html.ActionLink("🗓️Katıldıklarım", "Ijoined", "Event")</li>
+                        <li>@Html.ActionLink("✉Mesajlarım", "MyMessages", "Message")</li>
+                        <li>@Html.ActionLink("⚙" + user.Name,"UpdateUser","User")</li>//TODO Profil bilgileri güncelleme ve hesabı silme ekranı geldin tıklayınca
+                        <li>@Html.ActionLink("🚪Çıkış", "Logout", "Login")</li>
                     }
                     else
                     {

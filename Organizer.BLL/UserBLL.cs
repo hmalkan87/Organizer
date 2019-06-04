@@ -23,5 +23,10 @@ namespace Organizer.BLL
             Users user = db.Users.Where(x => x.ID == userID).FirstOrDefault();
             return user;
         }
+
+        public void UpdateUser()
+        {
+            db.SaveChanges();
+        }
     }
 }

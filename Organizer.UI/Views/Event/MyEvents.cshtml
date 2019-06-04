@@ -11,6 +11,7 @@
     @Html.ActionLink("+ Yeni Etkinlik", "CreateEvent")
 </p>
 <table class="table">
+            <b style="color:red">&nbsp; @TempData["Delete"]</b>
     <tr>
         <th>
             Resim
@@ -69,7 +70,7 @@
 
         <td>
             @Html.ActionLink("Düzenle", "UpdateEvent", new { id = item.ID }) |
-            @Html.ActionLink("Katılanlar", "EventDetails", new { id=item.ID }) |
+            @Html.ActionLink("Katılanlar", "EventDetails", new { id = item.ID }) |
             @Html.ActionLink("Sil", "DeleteEvent", new { id = item.ID })
         </td>
     </tr>

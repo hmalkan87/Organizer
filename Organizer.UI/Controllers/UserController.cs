@@ -14,7 +14,9 @@ namespace Organizer.UI.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            Users sessionUser = Session["User"] as Users;
+            Users user = userBLL.GetUser(sessionUser.ID);
+            return View(user);
         }
 
         [HttpGet]
@@ -28,6 +30,26 @@ namespace Organizer.UI.Controllers
         {
             userBLL.InsertUser(user);
             return RedirectToAction("Index", "Login");
+        }
+
+        [HttpGet]
+        public ActionResult UpdateUser()
+        {
+            Users sessionUser = Session["User"] as Users;
+            //Users user = userBLL.GetUser(sessionUser.ID);
+            return View(sessionUser);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateUser(Users updatedUser)
+        {//TODO passwordü iki kere girsin, eşleşirse update yapsın
+            Users userInDB = userBLL.GetUser(updatedUser.ID);
+            userInDB.Name = updatedUser.Name;
+            userInDB.Email = updatedUser.Email;
+            userInDB.Password = updatedUser.Password;
+            userBLL.UpdateUser();
+            Session["User"] = userBLL.GetUser(updatedUser.ID);
+            return RedirectToAction("Index", "User");
         }
 
         //TODO kullanıcı kaydı başarılı diye pop up çıkacak

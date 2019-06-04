@@ -10,7 +10,7 @@
 <h2>Katıldığım Etkinlikler</h2>
 
 <p>
-    @Html.ActionLink("+ Yeni Etkinlik", "Create")
+    @Html.ActionLink("+ Yeni Etkinlik", "CreateEvent")
 </p>
 <table class="table">
     <tr>
@@ -18,10 +18,10 @@
             Etkinlik Adı
         </th>
         <th>
-            Katılımcı Sayısı
+            Katılım
         </th>
         <th>
-            Katılımcı Sayısı
+            Organize Eden
         </th>
         <th></th>
     </tr>
@@ -36,8 +36,8 @@
             @Html.DisplayFor(modelItem => item.Events.NumberOfJoined)/@Html.DisplayFor(modelItem => item.Events.Capacity)
         </td>
         <td>
+            @Html.ActionLink("✉", "SendMessage", "Message", new { ownerID = item.Events.OwnerID }, htmlAttributes: new { })
             @Html.DisplayFor(modelItem => item.Events.Users.Name)
-            @Html.ActionLink("Mesaj Gönder", "SendMessage", "Message", new { ownerID = item.Events.OwnerID }, htmlAttributes: new { })
 
         </td>
         <td>

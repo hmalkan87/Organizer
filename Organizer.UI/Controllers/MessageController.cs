@@ -54,7 +54,7 @@ namespace Organizer.UI.Controllers
             {
                 receiverList = receiverList + item.Users.Name + ", ";
             }
-            ViewData["ReceiverList"] = receiverList.TrimEnd(',', ' '); 
+            ViewData["ReceiverList"] = receiverList.TrimEnd(',', ' ');
             #endregion
 
             return View();

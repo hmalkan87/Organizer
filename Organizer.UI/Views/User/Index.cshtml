@@ -1,0 +1,43 @@
+﻿@model Organizer.Entity.Users
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kullanıcı Bilgileri</h2>
+
+<div>
+    @*<h4>Kullanıcı Bilgileri</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Şifre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Hesabı Sil", "Edit", new { /* id = Model.PrimaryKey */ })
+    @*@Html.ActionLink("Back to List", "Index")*@
+</p>

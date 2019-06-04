@@ -26,7 +26,7 @@
             Oluşturan Kişi
         </th>
         <th>
-            Kontenjan
+            Katılım
         </th>
         <th>
             Etkinlik Tarihi
@@ -53,8 +53,8 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
+                @Html.ActionLink("✉", "SendMessage", "Message", new { ownerID = item.Users.ID }, htmlAttributes: new { })
                 @Html.DisplayFor(modelItem => item.Users.Name)
-                @Html.ActionLink("Mesaj Gönder", "SendMessage", "Message", new { ownerID = item.Users.ID }, htmlAttributes: new { })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumberOfJoined)/@Html.DisplayFor(modelItem => item.Capacity)
@@ -73,7 +73,7 @@
             </td>
             <td>
                 @*@Html.ActionLink("Düzenle", "Edit", new { id=item.ID }) |*@
-                @Html.ActionLink("Detaylar", "Details", new { id = item.ID })
+                @*@Html.ActionLink("Detaylar", "Details", new { id = item.ID })*@
 
                 @{
                     EventBLL eventBLL = new EventBLL();
